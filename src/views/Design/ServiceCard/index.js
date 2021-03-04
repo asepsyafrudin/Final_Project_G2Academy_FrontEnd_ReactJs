@@ -25,12 +25,12 @@ const useStyles = makeStyles(styles);
 export default function Cards({ title, link, description, urlImage }) {
   const classes = useStyles();
   return (
-    <div style={{ width: "40%", position: "relative", top: -25 }}>
+    <div style={{ minWidth: 250, maxWidth: 600 }}>
       <Card className={classes.textCenter}>
         <CardHeader color="danger">{title}</CardHeader>
         <CardBody>
           <img
-            style={{ height: "180px", width: "100%", display: "block" }}
+            style={{ width: "100%", display: "block", maxHeight: "200px" }}
             src={urlImage}
             alt="Card-img-cap"
           />

@@ -1,5 +1,5 @@
 export const data = {
-  date: "2/27/2021",
+  date: "3/3/2021",
   quantity: [
     {
       name: "Jam ke 1",

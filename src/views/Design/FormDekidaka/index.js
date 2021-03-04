@@ -95,6 +95,9 @@ function Dekidaka({ stateData, dispatch }) {
     setDate(date);
   };
 
+  let currentDate = new Date().toLocaleDateString();
+  let booleanDataisCurrentData = stateData.date === currentDate ? true : false;
+
   return (
     <div style={{ margin: "50px 20px" }}>
       <Card className={classes.textCenter}>
@@ -175,7 +178,7 @@ function Dekidaka({ stateData, dispatch }) {
                 Save
               </Button>
             </div>
-            <TableProductionProgress />
+            {booleanDataisCurrentData && <TableProductionProgress />}
           </CardBody>
         </form>
       </Card>

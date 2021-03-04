@@ -7,6 +7,7 @@ import image1 from "assets/img/service/ProductionMonitoringSystemIcon.jpg";
 import image2 from "assets/img/service/ProductionQualityIcon.jpg";
 import Footer from "views/Design/Footer";
 
+
 function Home(props) {
   const { ...rest } = props;
   return (
@@ -25,6 +26,7 @@ function Home(props) {
           justifyContent: "space-around",
           alignItems: "center",
           flexDirection: "row",
+          flexWrap: "wrap",
         }}
       >
         <ServiceCard
