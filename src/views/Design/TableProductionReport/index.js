@@ -33,37 +33,36 @@ const useStyles = makeStyles({
   },
 });
 
-function TableProductionReport({ stateData, dispatch }) {
+function TableProductionReport({ stateData }) {
   const classes = useStyles();
-  const data = stateData;
+  let currentDate = new Date().toLocaleDateString();
+  let data = stateData.filter((value) => value.date === currentDate);
   return (
     <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="customized table">
         <TableHead>
           <TableRow>
-            <StyledTableCell>Production Date</StyledTableCell>
-            <StyledTableCell align="right">Target</StyledTableCell>
+            <StyledTableCell>Production Time</StyledTableCell>
+            <StyledTableCell align="right">Line</StyledTableCell>
             <StyledTableCell align="right">OK Parts</StyledTableCell>
             <StyledTableCell align="right">NG Parts</StyledTableCell>
-            <StyledTableCell align="center">Problem</StyledTableCell>
+            <StyledTableCell align="center">Masalah</StyledTableCell>
+            <StyledTableCell align="center">
+              Waktu Berhenti (Menit)
+            </StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {data.quantity.map((row) => (
-            <StyledTableRow key={row.name}>
+          {data.map((row) => (
+            <StyledTableRow key={row.id}>
               <StyledTableCell component="th" scope="row">
-                {row.name}
+                {row.productionTime}
               </StyledTableCell>
-              <StyledTableCell align="right">
-                {row.target.toLocaleString()}
-              </StyledTableCell>
-              <StyledTableCell align="right">
-                {row.OK_PARTS.toLocaleString()}
-              </StyledTableCell>
-              <StyledTableCell align="right">
-                {row.NG_PARTS.toLocaleString()}
-              </StyledTableCell>
+              <StyledTableCell align="right">{row.line}</StyledTableCell>
+              <StyledTableCell align="right">{row.quantity_OK}</StyledTableCell>
+              <StyledTableCell align="right">{row.quantity_NG}</StyledTableCell>
               <StyledTableCell align="center">{row.problem}</StyledTableCell>
+              <StyledTableCell align="center">{row.stopTime}</StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>

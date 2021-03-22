@@ -1,5 +1,5 @@
 /*eslint-disable*/
-import React from "react";
+import React, { useState } from "react";
 import DescriptionIcon from "@material-ui/icons/Description";
 // react components for routing our app without refresh
 import { Link } from "react-router-dom";
@@ -8,8 +8,6 @@ import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
-import Tooltip from "@material-ui/core/Tooltip";
-
 // @material-ui/icons
 import { AccountCircle, Apps, HomeOutlined } from "@material-ui/icons";
 
@@ -19,13 +17,16 @@ import Button from "components/CustomButtons/Button.js";
 
 import styles from "assets/jss/material-kit-react/components/headerLinksStyle.js";
 
+import { GlobalConsumer } from "../../../context/store/store";
+
 const useStyles = makeStyles(styles);
 
-export default function HeaderLinks(props) {
+function HeaderLinks(props) {
+  const [userName] = useState(props.currentUser);
   const classes = useStyles();
   return (
     <List className={classes.list}>
-      <Link to="/" className={classes.listItem}>
+      <Link to="/home" className={classes.listItem}>
         <ListItem className={classes.listItem}>
           <Button color="transparent" className={classes.navLink}>
             <HomeOutlined className={classes.icons} /> Home
@@ -74,9 +75,11 @@ export default function HeaderLinks(props) {
       </ListItem>
       <ListItem className={classes.listItem}>
         <Button color="transparent" className={classes.navLink}>
-          <AccountCircle className={classes.icons} /> User
+          <AccountCircle className={classes.icons} /> {userName}
         </Button>
       </ListItem>
     </List>
   );
 }
+
+export default GlobalConsumer(HeaderLinks);

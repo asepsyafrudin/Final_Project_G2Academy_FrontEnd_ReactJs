@@ -13,7 +13,8 @@ import {
   UserRegistration,
   QualityReport,
   QualityForm,
-} from "views";
+  Login,
+} from "views/Pages";
 
 var hist = createBrowserHistory();
 
@@ -26,7 +27,8 @@ function App() {
         <Route path="/user-registration" component={UserRegistration} />
         <Route path="/quality-report" component={QualityReport} />
         <Route path="/quality-form" component={QualityForm} />
-        <Route path="/" component={HomePage} />
+        <Route path="/home" component={HomePage} />
+        <Route path="/" component={Login} />
       </Switch>
     </Router>
   );
